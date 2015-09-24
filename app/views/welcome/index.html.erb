@@ -1,0 +1,12 @@
+<h1> welcome page </h1>
+
+<form action="/upload-target" class="dropzone"></form>
+
+<% @videos.each do |vid| %>
+	<%= vid.url %>
+		<ul>
+		<% vid.tags.each do |tag|%>
+			<li><%= tag.description %></li>
+		</ul>
+		<%end%>
+<%end%>
