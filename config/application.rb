@@ -10,8 +10,8 @@ module AzureVideoProj
   class Application < Rails::Application
 
     AzureMediaService.configure do |config|
-         config.id = 'd662f397-d4df-40ef-8908-5742403cea49'
-         config.secret = '+FhkLvnaXM2rDbizgCgnqCrg5pqcAkVhVvsmof5lEXM='
+         config.id = 'pgkazuremedia'
+         config.secret = 'YEW2JPAVMDNTqzN8OSG6Z6yzSCXWMB8loS4ieBIy4YA='
     end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
