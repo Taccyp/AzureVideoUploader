@@ -40,35 +40,16 @@ class VideosController < ApplicationController
 
   def upload 
     ams = AzureMediaService.service
-    puts "UPLOADING FILE"
     asset = ams.upload_media(params[:file].path)
-    puts "PUBLISHING"
     policy = AzureMediaService::AccessPolicy.create(name: 'policy1',duration_minutes: 300, permission: 1)
     locator = AzureMediaService::Locator.create(policy_id: policy.Id, asset_id: asset.Id, type: 1)
-    puts asset.files
-    puts "ASSETTTTTT"
-    puts asset
-    puts "PUBLISH COMPLETE"
-
-
-    puts locator
     pub_url = asset.Uri+"/"+asset.files[0].Name+locator.ContentAccessComponent
     vid = Video.new
     vid.url = pub_url
     vid.save
-    
-    puts "ENCODING"
     job = asset.encode_job('H264 Adaptive Bitrate MP4 Set SD 4x3 for iOS Cellular Only')
     vid.job_id = job.Id
-    puts job.uri
-    puts "!!!!!!!!!!!!!"
-    puts vid.job_id
     vid.save
-    puts "ENCODING COMPLETE"
-    puts job
-    
-
-    puts asset.Uri+"/"+asset.files[0].Name+locator.ContentAccessComponent
     redirect_to welcome_path
   end
 
