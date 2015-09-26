@@ -59,7 +59,7 @@ class VideosController < ApplicationController
     
     puts "ENCODING"
     job = asset.encode_job('H264 Adaptive Bitrate MP4 Set SD 4x3 for iOS Cellular Only')
-    vid.job_id = job.__metadata["id"]
+    vid.job_id = job.Id
     puts job.uri
     puts "!!!!!!!!!!!!!"
     puts vid.job_id

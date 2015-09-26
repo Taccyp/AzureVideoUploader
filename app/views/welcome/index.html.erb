@@ -4,9 +4,14 @@
 
 <% @videos.each do |vid| %>
 	<%= vid.url %>
+	<% if vid.low_res_url.nil? %>
+	<p> still encoding </p>
+	<% else %>
+	<%= vid.low_res_url %>
 		<ul>
 		<% vid.tags.each do |tag|%>
 			<li><%= tag.description %></li>
 		</ul>
 		<%end%>
+	<%end%>
 <%end%>
