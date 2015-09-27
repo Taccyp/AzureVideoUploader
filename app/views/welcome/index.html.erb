@@ -1,8 +1,9 @@
 <h1> welcome page </h1>
 
 <form action="/upload" class="dropzone"></form>
-
+<div id="videolist">
 <% @videos.each do |vid| %>
+	<div id="video"><% vid %></div>
 	<%= vid.url %>
 	<% if vid.low_res_url.nil? %>
 	<p> still encoding </p>
@@ -15,3 +16,20 @@
 		<%end%>
 	<%end%>
 <%end%>
+</div>
+
+
+
+<script> 
+	$( document ).ready(function() {
+	$.ajax({
+	  url: "/",
+	  context: document.body
+	}).done(function() {
+	  $(th).addClass( "done" );
+	});
+
+)};
+
+
+</script>
